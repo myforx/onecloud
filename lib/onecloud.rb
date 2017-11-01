@@ -12,6 +12,8 @@ require 'onecloud/network'
 require 'onecloud/server'
 require 'onecloud/request'
 require 'onecloud/version'
+require 'onecloud/ssh'
+require 'onecloud/ssl'
 
 # Onecloud API Gem
 module Onecloud
@@ -24,8 +26,11 @@ module Onecloud
     include DC
     include DNS # TODO: Rename to Domains
     include Image
-    include Network
+    include PrivateNetwork
+    include PublicNetwork
     include Server
+    include SSH
+    include SSL
     include Errors
 
     API_ENDPOINT = 'https://api.1cloud.ru/'.freeze
@@ -57,7 +62,7 @@ module Onecloud
         json_body = JSON.parse(response.body, quirks_mode: true)
         result.new(response.code, RESPONSE_CODES[response.code.to_s.to_sym], json_body)
       else
-      	result.new(response.code, nil)
+        result.new(response.code, nil)
       end
     end
 
