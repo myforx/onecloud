@@ -1,21 +1,21 @@
 module Onecloud
   # Server Images (templates)
   module Image
-    # Get list of all available images
-    def images
-      get('Image')
+    # Get list of all available templates
+    def server_templates
+      get('image')
     end
 
-    # Create new Image
+    # Create new Image (template)
     # +Name+::string
-    # +TechName+::number
+    # +TechName+::string
     # +ServerID+::number
-    def add_image(params)
+    def server_template_create(params)
       post('image', params)
     end
 
     # Delete Image
-    def remove_image(id)
+    def server_template_remove(id)
       delete("image/#{id}")
     end
   end
