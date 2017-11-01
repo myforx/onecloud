@@ -5,23 +5,23 @@ module Onecloud
     # Params:
     # - Title     String - SSH key name
     # - PublicKey String
-    def add(params)
+    def ssh_add(params)
       post('sshkey', params)
     end
 
     # Get SSH key by his ID
-    def get(key_id)
-      get("sshkey/{key_id}")
+    def ssh_get(key_id)
+      get("sshkey/#{key_id}")
     end
 
     # List all SSH keys
-    def all
+    def ssh_list
       get('sshkey')
     end
 
     # Remove key by ID
-    def remove(key_id)
-      delete("sshkey/{key_id}")
+    def ssh_remove(key_id)
+      delete("sshkey/#{key_id}")
     end
   end
 end
